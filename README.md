@@ -1,6 +1,7 @@
 Dc_Thumbr
 ===================
 Handle the Magento's images through the [Thumbr.io](https://www.thumbr.io/) CDN.
+Also you can add filters and crop images without change your original files.
 
 Compatibility
 -------------
