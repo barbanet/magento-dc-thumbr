@@ -26,6 +26,7 @@ class Dc_Thumbr_Helper_Image extends Mage_Catalog_Helper_Image
             } else {
                 $model->setBaseFile($this->getProduct()->getData($model->getDestinationSubdir()));
             }
+            $url = false;
             if (Mage::helper('thumbr')->isEnable()) {
                 if ((string)$model->getWidth()) {
                     $_size = (string)$model->getWidth();
