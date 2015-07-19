@@ -34,19 +34,19 @@ class Dc_Thumbr_Helper_Image extends Mage_Catalog_Helper_Image
             $url = false;
             if (Mage::helper('thumbr')->isEnable()) {
                 if ((string)$model->getWidth()) {
-                    $_size = (string)$model->getWidth();
+                    $size = (string)$model->getWidth();
                 } else {
-                    $_size = (string)1200;
+                    $size = (string)1200;
                 }
-                $_image_name = substr($model->getNewFile(), (strrpos($model->getNewFile(), '/')+1), strlen($model->getNewFile()));
-                $_effect = Mage::getStoreConfig('thumbr/filters/effect');
-                if ($_effect) {
-                    $_thumbr = Mage::helper('thumbr')->thumbrio($model->getUrl(), $_size . Mage::getStoreConfig('thumbr/filters/crop') , $_image_name, 'effects=' . $_effect);
+                $image_name = substr($model->getNewFile(), (strrpos($model->getNewFile(), '/')+1), strlen($model->getNewFile()));
+                $effect = Mage::getStoreConfig('thumbr/filters/effect');
+                if ($effect) {
+                    $thumbr = Mage::helper('thumbr')->thumbrio($model->getUrl(), $size . Mage::getStoreConfig('thumbr/filters/crop') , $image_name, 'effects=' . $effect);
                 } else {
-                    $_thumbr = Mage::helper('thumbr')->thumbrio($model->getUrl(), $_size . Mage::getStoreConfig('thumbr/filters/crop') , $_image_name);
+                    $thumbr = Mage::helper('thumbr')->thumbrio($model->getUrl(), $size . Mage::getStoreConfig('thumbr/filters/crop') , $image_name);
                 }
-                if ($this->_fileExists($_thumbr)) {
-                    $url = $_thumbr;
+                if ($this->_fileExists($thumbr)) {
+                    $url = $thumbr;
                 }
             }
             if (!$url) {
