@@ -10,13 +10,20 @@
  *
  * @category   Dc
  * @package    Dc_Thumbr
- * @copyright  Copyright (c) 2015 Damián Culotta. (http://www.damianculotta.com.ar/)
+ * @copyright  Copyright (c) 2013-2015 Damián Culotta. (http://www.damianculotta.com.ar/)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 class Dc_Thumbr_Model_Product_Image extends Mage_Catalog_Model_Product_Image
 {
 
+    /**
+     * Set filenames for base file and new file
+     *
+     * @param string $file
+     * @return $this|Mage_Catalog_Model_Product_Image
+     * @throws Exception
+     */
     public function setBaseFile($file)
     {
         $this->_isBaseFilePlaceholder = false;
@@ -94,6 +101,9 @@ class Dc_Thumbr_Model_Product_Image extends Mage_Catalog_Model_Product_Image
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getUrl()
     {
         $baseDir = Mage::getBaseDir('media');

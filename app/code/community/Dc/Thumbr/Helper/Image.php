@@ -10,13 +10,18 @@
  *
  * @category   Dc
  * @package    Dc_Thumbr
- * @copyright  Copyright (c) 2015 Damián Culotta. (http://www.damianculotta.com.ar/)
+ * @copyright  Copyright (c) 2013-2015 Damián Culotta. (http://www.damianculotta.com.ar/)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 class Dc_Thumbr_Helper_Image extends Mage_Catalog_Helper_Image
 {
 
+    /**
+     * Return Image URL
+     *
+     * @return bool|string
+     */
     public function __toString()
     {
         try {
@@ -65,14 +70,19 @@ class Dc_Thumbr_Helper_Image extends Mage_Catalog_Helper_Image
         }
         return $url;
     }
-    
-    private function _fileExists($url) {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL,$url);
-        curl_setopt($ch, CURLOPT_NOBODY, 1);
-        curl_setopt($ch, CURLOPT_FAILONERROR, 1);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        if(curl_exec($ch)!==FALSE) {
+
+    /**
+     * @param $url
+     * @return bool
+     */
+    private function _fileExists($url)
+    {
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL,$url);
+        curl_setopt($curl, CURLOPT_NOBODY, 1);
+        curl_setopt($curl, CURLOPT_FAILONERROR, 1);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        if (curl_exec($curl) !== false) {
             return true;
         } else {
             return false;
