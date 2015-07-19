@@ -11,14 +11,14 @@
  *
  * @category   Dc
  * @package    Dc_Thumbr
- * @copyright  Copyright (c) 2015 Damián Culotta. (http://www.damianculotta.com.ar/)
+ * @copyright  Copyright (c) 2013-2015 Damián Culotta. (http://www.damianculotta.com.ar/)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 -->
 <config>
     <modules>
         <Dc_Thumbr>
-            <version>0.2.0</version>
+            <version>0.2.1</version>
         </Dc_Thumbr>
     </modules>
     <adminhtml>

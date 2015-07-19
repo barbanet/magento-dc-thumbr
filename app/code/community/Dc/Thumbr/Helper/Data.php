@@ -10,7 +10,7 @@
  *
  * @category   Dc
  * @package    Dc_Thumbr
- * @copyright  Copyright (c) 2015 Damián Culotta. (http://www.damianculotta.com.ar/)
+ * @copyright  Copyright (c) 2013-2015 Damián Culotta. (http://www.damianculotta.com.ar/)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -22,6 +22,11 @@ class Dc_Thumbr_Helper_Data extends Mage_Core_Helper_Abstract
     const CDN_UNSECURE = 'http://cdn.thumbr.io/';
     const CDN_SECURE = 'https://cdn.thumbr.io/';
 
+    /**
+     * Returns the service url according with the account type.
+     *
+     * @return string
+     */
     protected function getServiceUrl()
     {
         $_type = Mage::getStoreConfig('thumbr/service/type');
@@ -31,7 +36,12 @@ class Dc_Thumbr_Helper_Data extends Mage_Core_Helper_Abstract
             return 'http://api.thumbr.io/';
         }
     }
-    
+
+    /**
+     * Validates if module is enable.
+     *
+     * @return mixed
+     */
     public function isEnable()
     {
         return Mage::getStoreConfig('thumbr/service/enable');
@@ -42,16 +52,17 @@ class Dc_Thumbr_Helper_Data extends Mage_Core_Helper_Abstract
      * $url is the URL of the image that you want to process. This string should
      * be pure ASCII or UTF-8.
      */
-    function thumbrio($url, $size, $thumb_name='thumb.png', $query_arguments=NULL, $base_url=NULL) {
+    function thumbrio($url, $size, $thumb_name='thumb.png', $query_arguments = null, $base_url = null)
+    {
         if (!$base_url) {
             $base_url = self::API_UNSECURE;
         }
         if (substr($url, 0, 7) === 'http://') {
             $url = substr($url, 7);
         }
-        $encoded_url = $this->_thumbrio_urlencode($url);
-        $encoded_size = $this->_thumbrio_urlencode($size);
-        $encoded_thumb_name = $this->_thumbrio_urlencode($thumb_name);
+        $encoded_url = $this->thumbrio_urlencode($url);
+        $encoded_size = $this->thumbrio_urlencode($size);
+        $encoded_thumb_name = $this->thumbrio_urlencode($thumb_name);
         $path = "$encoded_url/$encoded_size/$encoded_thumb_name";
     
         if ($query_arguments) {
@@ -75,7 +86,8 @@ class Dc_Thumbr_Helper_Data extends Mage_Core_Helper_Abstract
      * Encodes a string following RFC 3986, adding "/" to the safe characters.
      * Assumes the $str is encoded in UTF-8.
      */
-    private function _thumbrio_urlencode($str) {
+    private function thumbrio_urlencode($str)
+    {
         $length = strlen($str);
         $encoded = '';
         for ($i = 0; $i < $length; $i++) {
