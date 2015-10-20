@@ -16,27 +16,27 @@
  */
 -->
 <config>
-	<acl>
-		<resources>
-			<all>
-				<title>Allow Everything</title>
-			</all>
-			<admin>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
                 <children>
                     <system>
                         <children>
-                        	<config>
-                        		<children>
-	                                <thumbr>
-	                                    <title>Thumbr</title>
-	                                    <sort_order>1011</sort_order>
-	                                </thumbr>
-								</children>
-							</config>
+                            <config>
+                                <children>
+                                    <thumbr>
+                                        <title>Thumbr</title>
+                                        <sort_order>1011</sort_order>
+                                    </thumbr>
+                                </children>
+                            </config>
                         </children>
                    </system>
                 </children>
             </admin>
-		</resources>
-	</acl>
+        </resources>
+    </acl>
 </config>
